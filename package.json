@@ -2,8 +2,16 @@
   "name": "bitstamp-cli",
   "version": "0.0.0",
   "description": "A command line interface application to talk with Bitstamp",
+  "bin": {
+    "bitstamp": "./bin/bitstamp"
+  },
   "scripts": {
-    "start": "babel-node ./src"
+    "start": "babel-node ./src",
+    "clean": "rimraf ./dist",
+    "transpile": "babel ./src -d ./dist",
+    "build": "npm run clean && npm run transpile",
+    "prepublish": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -32,6 +40,7 @@
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
-    "babel-preset-env": "1.6.1"
+    "babel-preset-env": "1.6.1",
+    "rimraf": "2.6.2"
   }
 }
