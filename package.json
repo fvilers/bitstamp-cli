@@ -25,6 +25,9 @@
     "url": "https://github.com/fvilers/bitstamp-cli/issues"
   },
   "homepage": "https://github.com/fvilers/bitstamp-cli#readme",
+  "dependencies": {
+    "yargs": "10.1.1"
+  },
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.6.1"

@@ -1,1 +1,7 @@
-console.log('bitstamp-cli is running');
+import yargs from 'yargs';
+
+export default yargs
+  .commandDir('cmds')
+  .demandCommand()
+  .help()
+  .argv;
