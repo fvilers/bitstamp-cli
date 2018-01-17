@@ -2,6 +2,9 @@
   "name": "bitstamp-cli",
   "version": "0.0.0",
   "description": "A command line interface application to talk with Bitstamp",
+  "bin": {
+    "bitstamp": "./bin/bitstamp"
+  },
   "scripts": {
     "start": "babel-node ./src",
     "clean": "rimraf ./dist",
