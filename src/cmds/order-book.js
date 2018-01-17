@@ -1,6 +1,7 @@
 import { promisify } from 'util';
 import Bitstamp from 'bitstamp';
 import _ from 'lodash';
+import chalk from 'chalk';
 import { table } from 'table';
 import { SUPPORTED_CURRENCY_PAIRS } from '../constants';
 import { asyncWrapper } from '../util';
@@ -12,8 +13,9 @@ const orderBookHandler = async (argv) => {
   const empty = ['', ''];
   const formatLine = line => [
     line[0] && line[1] ? line[0] * line[1] : '', // Value
-    line[1], line[0], // Bid
-    line[2], // Ask
+    line[1], // Amount
+    chalk.bold.green(line[0]), // Bid
+    chalk.bold.red(line[2]), // Ask
     line[3], // Amount
     line[2] && line[3] ? line[2] * line[3] : '' // value
   ];
