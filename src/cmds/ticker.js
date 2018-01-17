@@ -27,7 +27,6 @@ const tickerHandler = async (argv) => {
   ];
 
   console.log(table(rows));
-  console.log(argv);
 };
 
 export const command = 'ticker <currency_pair>';
