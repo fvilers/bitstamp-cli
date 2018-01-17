@@ -1,0 +1,25 @@
+{
+  "name": "bitstamp-cli",
+  "version": "0.0.0",
+  "description": "A command line interface application to talk with Bitstamp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvilers/bitstamp-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "bitstamp",
+    "api",
+    "btc",
+    "xrp",
+    "ltc",
+    "eth",
+    "bch"
+  ],
+  "author": "Fabian Vilers <fabian.vilers@dev-one.com> (https://www.dev-one.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fvilers/bitstamp-cli/issues"
+  },
+  "homepage": "https://github.com/fvilers/bitstamp-cli#readme"
+}
