@@ -15,3 +15,8 @@ export const SUPPORTED_CURRENCY_PAIRS = [
   'bcheur',
   'bchbtc'
 ];
+
+export const TRANSACTION_TYPES = {
+  '0': 'buy',
+  '1': 'sell'
+};
