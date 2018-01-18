@@ -4,7 +4,7 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { table } from 'table';
 import { SUPPORTED_CURRENCY_PAIRS } from '../constants';
-import { asyncWrapper } from '../util';
+import { asyncWrapper, numberToLocaleString } from '../util';
 
 const bitstamp = new Bitstamp();
 const orderBookHandler = async (argv) => {
@@ -12,12 +12,12 @@ const orderBookHandler = async (argv) => {
   const data = await promisify(bitstamp.order_book)(currency_pair);
   const empty = ['', ''];
   const formatLine = line => [
-    line[0] && line[1] ? line[0] * line[1] : '', // Value
+    line[0] && line[1] ? numberToLocaleString(line[0] * line[1]) : '', // Value
     line[1], // Amount
     chalk.bold.green(line[0]), // Bid
     chalk.bold.red(line[2]), // Ask
     line[3], // Amount
-    line[2] && line[3] ? line[2] * line[3] : '' // value
+    line[2] && line[3] ? numberToLocaleString(line[2] * line[3]) : '' // value
   ];
 
   const rows = [
