@@ -16,7 +16,7 @@ const COLORS = {
   1: chalk.bold.red // Sell
 };
 const transactionsHandler = async (argv) => {
-  const { currency_pair, time } = argv;
+  const { currency_pair, time, line } = argv;
   const data = await promisify(bitstamp.transactions)(currency_pair, { time });
   const currency = currency_pair
     .slice(0, 3)
@@ -31,7 +31,9 @@ const transactionsHandler = async (argv) => {
 
   const rows = [
     ['Date and time', 'Transaction ID', 'Type', `${currency} price`, `${currency} amount`],
-    ...data.map(formatLine)
+    ...data
+      .slice(0, line || data.length)
+      .map(formatLine)
   ];
 
   console.log(table(rows));
@@ -41,5 +43,9 @@ export const command = 'transactions <currency_pair> [time]';
 export const description = 'Returns a descending list of transactions for the specified currency pair.';
 export const builder = yargs => yargs
   .choices('currency_pair', SUPPORTED_CURRENCY_PAIRS)
-  .choices('time', SUPPORTED_TIME);
+  .choices('time', SUPPORTED_TIME)
+  .option('l', {
+    alias: 'line',
+    type: 'number'
+  });
 export const handler = asyncWrapper(transactionsHandler);
