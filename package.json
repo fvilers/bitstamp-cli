@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/fvilers/bitstamp-cli#readme",
   "dependencies": {
-    "bitstamp": "1.0.6",
+    "bitstamp": "git+https://github.com/fvilers/bitstamp.git#patch-1",
     "chalk": "2.3.0",
     "lodash": "4.17.4",
     "table": "4.0.2",
