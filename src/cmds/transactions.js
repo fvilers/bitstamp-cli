@@ -1,5 +1,6 @@
 import { promisify } from 'util';
 import Bitstamp from 'bitstamp';
+import chalk from 'chalk';
 import { table } from 'table';
 import { SUPPORTED_CURRENCY_PAIRS, TRANSACTION_TYPES } from '../constants';
 import { asyncWrapper, dateAndTimeToLocaleString } from '../util';
@@ -10,6 +11,10 @@ const SUPPORTED_TIME = [
   'day'
 ];
 const bitstamp = new Bitstamp();
+const COLORS = {
+  0: chalk.bold.green, // Buy
+  1: chalk.bold.red // Sell
+};
 const transactionsHandler = async (argv) => {
   const { currency_pair, time } = argv;
   const data = await promisify(bitstamp.transactions)(currency_pair, { time });
@@ -20,8 +25,8 @@ const transactionsHandler = async (argv) => {
     dateAndTimeToLocaleString(line.date * 1000),
     line.tid,
     TRANSACTION_TYPES[line.type].toLocaleUpperCase(),
-    line.price,
-    line.amount
+    COLORS[line.type](line.price),
+    COLORS[line.type](line.amount)
   ];
 
   const rows = [
