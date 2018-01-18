@@ -2,7 +2,7 @@ import { promisify } from 'util';
 import Bitstamp from 'bitstamp';
 import { table } from 'table';
 import { SUPPORTED_CURRENCY_PAIRS } from '../constants';
-import { asyncWrapper } from '../util';
+import { asyncWrapper, dateAndTimeToLocaleString } from '../util';
 
 const bitstamp = new Bitstamp();
 const tickerHandler = async (argv) => {
@@ -15,7 +15,7 @@ const tickerHandler = async (argv) => {
   const desc = hourly ? 'Last hour' : 'Last 24 hours';
 
   const rows = [
-    ['Date and time', new Date(data.timestamp * 1000).toLocaleString()],
+    ['Date and time', dateAndTimeToLocaleString(data.timestamp * 1000)],
     [`Last ${currency} price`, data.last],
     [`${desc} price high`, data.high],
     [`${desc} price low`, data.low],
