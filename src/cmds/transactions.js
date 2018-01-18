@@ -2,7 +2,7 @@ import { promisify } from 'util';
 import Bitstamp from 'bitstamp';
 import { table } from 'table';
 import { SUPPORTED_CURRENCY_PAIRS, TRANSACTION_TYPES } from '../constants';
-import { asyncWrapper } from '../util';
+import { asyncWrapper, dateAndTimeToLocaleString } from '../util';
 
 const SUPPORTED_TIME = [
   'minute',
@@ -17,7 +17,7 @@ const transactionsHandler = async (argv) => {
     .slice(0, 3)
     .toLocaleUpperCase();
   const formatLine = line => [
-    new Date(line.date * 1000).toLocaleString(),
+    dateAndTimeToLocaleString(line.date * 1000),
     line.tid,
     TRANSACTION_TYPES[line.type].toLocaleUpperCase(),
     line.price,
