@@ -17,6 +17,6 @@ export const SUPPORTED_CURRENCY_PAIRS = [
 ];
 
 export const TRANSACTION_TYPES = {
-  '0': 'buy',
-  '1': 'sell'
+  0: 'buy',
+  1: 'sell'
 };
