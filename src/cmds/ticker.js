@@ -12,18 +12,18 @@ const tickerHandler = async (argv) => {
   const currency = currency_pair
     .slice(0, 3)
     .toLocaleUpperCase();
-  const desc = hourly ? 'Last hour' : 'Last 24 hours';
+  const lastLabel = hourly ? 'Last hour' : 'Last 24 hours';
 
   const rows = [
     ['Date and time', dateAndTimeToLocaleString(data.timestamp * 1000)],
     [`Last ${currency} price`, data.last],
-    [`${desc} price high`, data.high],
-    [`${desc} price low`, data.low],
-    [`${desc} volume weighted average price`, data.vwap],
-    [`${desc} volume`, data.volume],
+    [`${lastLabel} price high`, data.high],
+    [`${lastLabel} price low`, data.low],
+    [`${lastLabel} volume weighted average price`, data.vwap],
+    [`${lastLabel} volume`, data.volume],
     ['Highest buy order', data.bid],
     ['Lowest sell order', data.ask],
-    ['First price of the day', data.open]
+    [`First price of the ${hourly ? 'hour' : 'day'}`, data.open]
   ];
 
   console.log(table(rows));
